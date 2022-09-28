@@ -11,4 +11,5 @@ rules:
     import/extensions:
       - error
       - ignorePackages
-     - js: always
+      - js: always
+    no-underscore-dangle: [2, { "allow": ["__filename", "__dirname"] }]
