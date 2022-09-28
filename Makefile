@@ -1,4 +1,6 @@
 install:
+
+install-deps:
 	npm ci
 
 gendiff:
@@ -8,4 +10,4 @@ publish:
 	npm publish --dry-run
 
 lint:
-	npm npx eslint .
+	npx eslint .
