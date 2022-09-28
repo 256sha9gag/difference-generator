@@ -2,9 +2,10 @@ import _ from 'lodash';
 
 const getDiff = (objs) => {
   const [objFile1, objFile2] = objs;
-  const concatKeys = _.sortBy(_.uniq(Object.keys(objFile1).concat(Object.keys(objFile2))));
+  const concatKeys = Object.keys(objFile1).concat(Object.keys(objFile2));
+  const sortUniqKeys = _.sortBy(_.uniq(concatKeys));
 
-  const diffStr = concatKeys.reduce((acc, elem) => {
+  const diffStr = sortUniqKeys.reduce((acc, elem) => {
     const elemObjFile1 = `"${elem}": ${objFile1[elem]}`;
     const elemObjFile2 = `"${elem}": ${objFile2[elem]}`;
 
