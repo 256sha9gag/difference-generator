@@ -15,4 +15,4 @@ program
   })
   .option('-f, --format <type>', 'output format');
 
-export default program;
+export { getDiff, getObjs, program };
