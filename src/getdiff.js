@@ -19,9 +19,8 @@ const getDiff = (objs) => {
     if (_.has(obj1, elem)) {
       if (obj1[elem] === obj2[elem]) {
         acc.push(`${symbols['indent']} ${symbols['unchange']} ${elemObj1}`);
-      }
-      if (obj1[elem] !== obj2[elem]) {
-        acc.push(`${symbols['indent']} ${symbols['change']} ${elemObj1}`);  
+      } else {
+        acc.push(`${symbols['indent']} ${symbols['change']} ${elemObj1}`); 
       }
     }
   
@@ -36,5 +35,7 @@ const getDiff = (objs) => {
 
   return `{${diffStr.join('')}\n}`;
 };
+
+
 
 export default getDiff;
