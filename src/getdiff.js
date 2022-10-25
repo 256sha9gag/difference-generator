@@ -1,30 +1,34 @@
 import _ from 'lodash';
 
+const symbols = {
+  unchange: ' ',
+  added: '+',
+  change: '-',
+  indent: '\n',
+};
+
 const getDiff = (objs) => {
-  const [objFile1, objFile2] = objs;
-  const concatKeys = Object.keys(objFile1).concat(Object.keys(objFile2));
-  const sortUniqKeys = _.sortBy(_.uniq(concatKeys));
+  const [obj1, obj2] = objs;
+  const keys = Object.keys(obj1).concat(Object.keys(obj2));
+  const uniqSortedkeys = _.sortBy(_.uniq(keys));
 
-  const diffStr = sortUniqKeys.reduce((acc, elem) => {
-    const elemObjFile1 = `"${elem}": ${objFile1[elem]}`;
-    const elemObjFile2 = `"${elem}": ${objFile2[elem]}`;
+  const diffStr = uniqSortedkeys.reduce((acc, elem) => {
+    const elemObj1 = `"${elem}": ${obj1[elem]}`;
+    const elemObj2 = `"${elem}": ${obj2[elem]}`;
 
-    if (_.has(objFile1, elem) && _.has(objFile2, elem)) {
-      if (objFile1[elem] === objFile2[elem]) {
-        acc.push(`\n    ${elemObjFile1}`);
+    if (_.has(obj1, elem)) {
+      if (obj1[elem] === obj2[elem]) {
+        acc.push(`${symbols['indent']} ${symbols['unchange']} ${elemObj1}`);
       }
-      if (objFile1[elem] !== objFile2[elem]) {
-        acc.push(`\n  - ${elemObjFile1}`);
-        acc.push(`\n  + ${elemObjFile2}`);
+      if (obj1[elem] !== obj2[elem]) {
+        acc.push(`${symbols['indent']} ${symbols['change']} ${elemObj1}`);  
       }
     }
-
-    if (_.has(objFile1, elem) && !_.has(objFile2, elem)) {
-      acc.push(`\n  - ${elemObjFile1}`);
-    }
-
-    if (!_.has(objFile1, elem) && _.has(objFile2, elem)) {
-      acc.push(`\n  + ${elemObjFile2}`);
+  
+    if (_.has(obj2, elem)) {
+      if (obj1[elem] !== obj2[elem]) {
+        acc.push(`${symbols['indent']} ${symbols['added']} ${elemObj2}`);
+      }
     }
 
     return acc;
