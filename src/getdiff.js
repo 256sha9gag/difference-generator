@@ -1,4 +1,5 @@
 import _ from 'lodash';
+import { getObjs } from './getobjs.js';
 
 const symbols = {
   unchange: ' ',
@@ -7,8 +8,8 @@ const symbols = {
   indent: '\n',
 };
 
-const getDiff = (objs) => {
-  const [obj1, obj2] = objs;
+const getDiff = (files) => {
+  const [obj1, obj2] = getObjs(files);
   const keys = Object.keys(obj1).concat(Object.keys(obj2));
   const uniqSortedkeys = _.sortBy(_.uniq(keys));
 
@@ -18,15 +19,15 @@ const getDiff = (objs) => {
 
     if (_.has(obj1, elem)) {
       if (obj1[elem] === obj2[elem]) {
-        acc.push(`${symbols['indent']} ${symbols['unchange']} ${elemObj1}`);
+        acc.push(`${symbols.indent} ${symbols.unchange} ${elemObj1}`);
       } else {
-        acc.push(`${symbols['indent']} ${symbols['change']} ${elemObj1}`); 
+        acc.push(`${symbols.indent} ${symbols.change} ${elemObj1}`);
       }
     }
-  
+
     if (_.has(obj2, elem)) {
       if (obj1[elem] !== obj2[elem]) {
-        acc.push(`${symbols['indent']} ${symbols['added']} ${elemObj2}`);
+        acc.push(`${symbols.indent} ${symbols.added} ${elemObj2}`);
       }
     }
 
@@ -35,7 +36,5 @@ const getDiff = (objs) => {
 
   return `{${diffStr.join('')}\n}`;
 };
-
-
 
 export default getDiff;
