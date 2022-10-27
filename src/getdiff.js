@@ -1,5 +1,5 @@
 import _ from 'lodash';
-import { getObjs } from './getobjs.js';
+import getObject from './parsers.js';
 
 const symbols = {
   unchange: ' ',
@@ -8,25 +8,26 @@ const symbols = {
   indent: '\n',
 };
 
-const getDiff = (files) => {
-  const [obj1, obj2] = getObjs(files);
-  const keys = Object.keys(obj1).concat(Object.keys(obj2));
+const getDiff = (filepath1, filepath2) => {
+  const object1 = getObject(filepath1);
+  const object2 = getObject(filepath2);
+  const keys = _.union(_.keys(object1), _.keys(object2));
   const uniqSortedkeys = _.sortBy(_.uniq(keys));
 
   const diffStr = uniqSortedkeys.reduce((acc, elem) => {
-    const elemObj1 = `"${elem}": ${obj1[elem]}`;
-    const elemObj2 = `"${elem}": ${obj2[elem]}`;
+    const elemObj1 = `"${elem}": ${object1[elem]}`;
+    const elemObj2 = `"${elem}": ${object2[elem]}`;
 
-    if (_.has(obj1, elem)) {
-      if (obj1[elem] === obj2[elem]) {
+    if (_.has(object1, elem)) {
+      if (object1[elem] === object2[elem]) {
         acc.push(`${symbols.indent} ${symbols.unchange} ${elemObj1}`);
       } else {
         acc.push(`${symbols.indent} ${symbols.change} ${elemObj1}`);
       }
     }
 
-    if (_.has(obj2, elem)) {
-      if (obj1[elem] !== obj2[elem]) {
+    if (_.has(object2, elem)) {
+      if (object1[elem] !== object2[elem]) {
         acc.push(`${symbols.indent} ${symbols.added} ${elemObj2}`);
       }
     }
