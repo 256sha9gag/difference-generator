@@ -1,6 +1,5 @@
 import { Command } from 'commander';
 import getDiff from '../src/getdiff.js';
-import { getFiles } from '../src/getobjs.js';
 
 const program = new Command();
 
@@ -10,7 +9,7 @@ program
   .version('0.0.1')
   .arguments('<filepath1> <filepath2>')
   .action((filepath1, filepath2) => {
-    const result = getDiff(getFiles(filepath1, filepath2));
+    const result = getDiff(filepath1, filepath2);
     console.log(result);
   })
   .option('-f, --format <type>', 'output format');
