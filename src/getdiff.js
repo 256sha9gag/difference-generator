@@ -15,20 +15,20 @@ const getDiff = (filepath1, filepath2) => {
   const uniqSortedkeys = _.sortBy(_.uniq(keys));
 
   const diffStr = uniqSortedkeys.reduce((acc, elem) => {
-    const elemObj1 = `"${elem}": ${object1[elem]}`;
-    const elemObj2 = `"${elem}": ${object2[elem]}`;
+    const elemObj1 = `${elem}: ${object1[elem]}`;
+    const elemObj2 = `${elem}: ${object2[elem]}`;
 
     if (_.has(object1, elem)) {
       if (object1[elem] === object2[elem]) {
-        acc.push(`${symbols.indent} ${symbols.unchange} ${elemObj1}`);
+        acc.push(`${symbols.indent}  ${symbols.unchange} ${elemObj1}`);
       } else {
-        acc.push(`${symbols.indent} ${symbols.change} ${elemObj1}`);
+        acc.push(`${symbols.indent}  ${symbols.change} ${elemObj1}`);
       }
     }
 
     if (_.has(object2, elem)) {
       if (object1[elem] !== object2[elem]) {
-        acc.push(`${symbols.indent} ${symbols.added} ${elemObj2}`);
+        acc.push(`${symbols.indent}  ${symbols.added} ${elemObj2}`);
       }
     }
 
