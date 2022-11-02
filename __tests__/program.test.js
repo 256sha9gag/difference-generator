@@ -12,10 +12,10 @@ const getFixturePath = (filename) => path.join(__dirname, '..', '__fixtures__', 
 
 test('getdiff json', () => {
   // const readFile = (filename) => fs.readFileSync(getFixturePath(filename), 'utf-8');
-  expect(trueResult).toBe(getDiff(getFixturePath('file1.json'), getFixturePath('file2.json')));
+  expect(trueResult).toBe(getDiff(getFixturePath('float_file1.json'), getFixturePath('float_file2.json')));
 });
 
 test('getdiff yml', () => {
   // const readFile = (filename) => fs.readFileSync(getFixturePath(filename), 'utf-8');
-  expect(trueResult).toBe(getDiff(getFixturePath('file1.yml'), getFixturePath('file2.yml')));
+  expect(trueResult).toBe(getDiff(getFixturePath('float_file1.yml'), getFixturePath('float_file2.yml')));
 });
