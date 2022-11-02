@@ -2,20 +2,18 @@ import * as path from 'path';
 import { expect, test } from '@jest/globals';
 import { fileURLToPath } from 'url';
 import { dirname } from 'path';
-// import * as fs from 'node:fs';
+import * as fs from 'node:fs';
 import getDiff from '../src/getdiff.js';
-import trueResult from '../__fixtures__/trueResult.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 const getFixturePath = (filename) => path.join(__dirname, '..', '__fixtures__', filename);
+const readFile = (filename) => fs.readFileSync(getFixturePath(filename), 'utf-8');
 
 test('getdiff json', () => {
-  // const readFile = (filename) => fs.readFileSync(getFixturePath(filename), 'utf-8');
-  expect(trueResult).toBe(getDiff(getFixturePath('float_file1.json'), getFixturePath('float_file2.json')));
+  expect(readFile('expect_nested.txt')).toBe(getDiff(getFixturePath('float_file1.json'), getFixturePath('float_file2.json')));
 });
 
 test('getdiff yml', () => {
-  // const readFile = (filename) => fs.readFileSync(getFixturePath(filename), 'utf-8');
-  expect(trueResult).toBe(getDiff(getFixturePath('float_file1.yml'), getFixturePath('float_file2.yml')));
+  expect(readFile('expect_nested.txt')).toBe(getDiff(getFixturePath('float_file1.yml'), getFixturePath('float_file2.yml')));
 });
