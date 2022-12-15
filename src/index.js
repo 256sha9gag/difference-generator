@@ -28,10 +28,14 @@ const genDiff = (object1, object2) => {
   return result;
 };
 
-const getDiff = (filepath1, filepath2) => {
+const getDiff = (filepath1, filepath2, formatter) => {
   const object1 = getObject(filepath1);
   const object2 = getObject(filepath2);
-  return stylish(genDiff(object1, object2));
+  if (formatter === 'stylish') {
+    return stylish(genDiff(object1, object2));
+  }
+
+  throw new Error('unknown formatter');
 };
 
 export default getDiff;

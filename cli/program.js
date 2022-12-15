@@ -9,9 +9,10 @@ program
   .version('0.0.1')
   .arguments('<filepath1> <filepath2>')
   .action((filepath1, filepath2) => {
-    const result = getDiff(filepath1, filepath2);
+    const formatter = program.opts().format;
+    const result = getDiff(filepath1, filepath2, formatter);
     console.log(result);
   })
-  .option('-f, --format <type>', 'output format');
+  .option('-f, --format <type>', 'output format', 'stylish');
 
 export default program;
