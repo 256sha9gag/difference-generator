@@ -29,7 +29,7 @@
     make lint
 
   ### Quick Start
-    Unitlity help: ```gendiff -h```
+  Unitlity help: ```gendiff -h```
 
 ## Example of usage:
 
