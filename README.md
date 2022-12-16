@@ -13,7 +13,7 @@ A difference generator is a program that determines the difference between two d
  - Support for different input formats: ```yaml```, ```json```, ```ini``` .
  - Generation a report in the form of ```plain text```, ```stylish```, ```json``` .
 
-### Example of usage
+### Example of usage:
 ```bash
 # plain format
 gendiff --format plain path/to/file.yml another/path/file.json
@@ -40,3 +40,7 @@ gendiff filepath1.json filepath2.json
 }
 
 ```
+## Installation:
+
+### Requirements:
+- Mac / Linux
