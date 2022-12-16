@@ -12,9 +12,11 @@ const readFile = (filename) => fs.readFileSync(getFixturePath(filename), 'utf-8'
 
 const expectFloatStylish = readFile('expect_float.txt');
 
-const expectNestedStylish = readFile('expect_nested.txt');
+const expectNestedStylish = readFile('expect_nested_stylish.txt');
 
-const expectNestedPlain = readFile('expect_plain.txt');
+const expectNestedPlain = readFile('expect_nested_plain.txt');
+
+const expectNestedJSON = readFile('expect_nested_json.json');
 
 test('getdiff stylish float.json', () => {
   expect(getDiff(getFixturePath('float_file1.json'), getFixturePath('float_file2.json'), 'stylish')).toEqual(expectFloatStylish);
@@ -38,4 +40,12 @@ test('getdiff plain nested.json', () => {
 
 test('getdiff plain nested.yml', () => {
   expect(getDiff(getFixturePath('nested_file1.yml'), getFixturePath('nested_file2.yml'), 'plain')).toEqual(expectNestedPlain);
+});
+
+test('getdiff json nested.json', () => {
+  expect(getDiff(getFixturePath('nested_file1.json'), getFixturePath('nested_file2.json'), 'plain')).toEqual(expectNestedJSON);
+});
+
+test('getdiff json nested.yml', () => {
+  expect(getDiff(getFixturePath('nested_file1.yml'), getFixturePath('nested_file2.yml'), 'plain')).toEqual(expectNestedJSON);
 });
