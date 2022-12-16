@@ -28,8 +28,7 @@
   ### Lint
     make lint
 
-  ### Quick Start
-  Unitlity help: 
+  ### Quick Start 
     gendiff -h
 
 ## Example of usage:
