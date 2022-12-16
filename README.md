@@ -29,18 +29,19 @@
     make lint
 
   ### Quick Start
-  Unitlity help: ```gendiff -h```
+  Unitlity help: 
+    gendiff -h
 
 ## Example of usage:
-
-  ### Run gendiff with (default forrmater = stylish) flat json and yml files:
-   [![asciicast](https://asciinema.org/a/546151.svg)](https://asciinema.org/a/546151)
-
-  ### Run gendiff with (default forrmater = stylish) nested json and yml files:
-   [![asciicast](https://asciinema.org/a/546152.svg)](https://asciinema.org/a/546152)
-
-  ### Run gendiff with (forrmater = plain) nested json and yml files:
-   [![asciicast](https://asciinema.org/a/546153.svg)](https://asciinema.org/a/546153)
-
-  ### Run gendiff with (forrmater = json) nested json and yml files:
-   [![asciicast](https://asciinema.org/a/546154.svg)](https://asciinema.org/a/546154)
+<details><summary>Run gendiff with (default forrmater = stylish) flat json and yml files:</summary>
+[![asciicast](https://asciinema.org/a/546151.svg)](https://asciinema.org/a/546151)
+</details>
+<details><summary>Run gendiff with (default forrmater = stylish) nested json and yml files:</summary>
+[![asciicast](https://asciinema.org/a/546152.svg)](https://asciinema.org/a/546152)
+</details>
+<details><summary>Run gendiff with (forrmater = plain) nested json and yml files::</summary>
+[![asciicast](https://asciinema.org/a/546153.svg)](https://asciinema.org/a/546153)
+</details>
+<details><summary>Run gendiff with (default forrmater = stylish) flat json and yml files:</summary>
+[![asciicast](https://asciinema.org/a/546154.svg)](https://asciinema.org/a/546154)
+</details>
