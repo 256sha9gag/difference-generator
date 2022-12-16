@@ -2,6 +2,7 @@ import _ from 'lodash';
 import getObject from './parsers.js';
 import stylish from './formatters/stylish.js';
 import plain from './formatters/plain.js';
+import json from './formatters/json.js';
 
 const genDiff = (object1, object2) => {
   const keys = _.sortBy(_.union(_.keys(object1), _.keys(object2)));
@@ -37,6 +38,8 @@ const getDiff = (filepath1, filepath2, formatName) => {
       return stylish(genDiff(object1, object2));
     case 'plain':
       return plain(genDiff(object1, object2));
+    case 'json':
+      return json(genDiff(object1, object2));
     default:
       throw new Error('unknown formatName');
   }
