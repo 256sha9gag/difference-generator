@@ -10,24 +10,32 @@ const __dirname = dirname(__filename);
 const getFixturePath = (filename) => path.join(__dirname, '..', '__fixtures__', filename);
 const readFile = (filename) => fs.readFileSync(getFixturePath(filename), 'utf-8');
 
-const expectFloat = readFile('expect_float.txt');
-console.log(typeof expectFloat);
+const expectFloatStylish = readFile('expect_float.txt');
 
-const expectNested = readFile('expect_nested.txt');
-console.log(typeof expectFloat);
+const expectNestedStylish = readFile('expect_nested.txt');
 
-test('getdiff float json', () => {
-  expect(getDiff(getFixturePath('float_file1.json'), getFixturePath('float_file2.json'), 'stylish')).toEqual(expectFloat);
+const expectNestedPlain = readFile('expect_plain.txt');
+
+test('getdiff stylish float.json', () => {
+  expect(getDiff(getFixturePath('float_file1.json'), getFixturePath('float_file2.json'), 'stylish')).toEqual(expectFloatStylish);
 });
 
-test('getdiff float yml', () => {
-  expect(getDiff(getFixturePath('float_file1.yml'), getFixturePath('float_file2.yml'), 'stylish')).toEqual(expectFloat);
+test('getdiff stylish float.yml', () => {
+  expect(getDiff(getFixturePath('float_file1.yml'), getFixturePath('float_file2.yml'), 'stylish')).toEqual(expectFloatStylish);
 });
 
-test('getdiff nested json', () => {
-  expect(getDiff(getFixturePath('nested_file1.json'), getFixturePath('nested_file2.json'), 'stylish')).toEqual(expectNested);
+test('getdiff stylish nested.json', () => {
+  expect(getDiff(getFixturePath('nested_file1.json'), getFixturePath('nested_file2.json'), 'stylish')).toEqual(expectNestedStylish);
 });
 
-test('getdiff nested yml', () => {
-  expect(getDiff(getFixturePath('nested_file1.yml'), getFixturePath('nested_file2.yml'), 'stylish')).toEqual(expectNested);
+test('getdiff stylish nested.yml', () => {
+  expect(getDiff(getFixturePath('nested_file1.yml'), getFixturePath('nested_file2.yml'), 'stylish')).toEqual(expectNestedStylish);
+});
+
+test('getdiff plain nested.json', () => {
+  expect(getDiff(getFixturePath('nested_file1.json'), getFixturePath('nested_file2.json'), 'plain')).toEqual(expectNestedPlain);
+});
+
+test('getdiff plain nested.yml', () => {
+  expect(getDiff(getFixturePath('nested_file1.yml'), getFixturePath('nested_file2.yml'), 'plain')).toEqual(expectNestedPlain);
 });
