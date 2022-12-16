@@ -6,8 +6,8 @@ const replacer = ' ';
 const label = {
   nested: ' ',
   added: '+',
-  deleted: '-',
-  unchange: ' ',
+  removed: '-',
+  unchanged: ' ',
 };
 
 const addPrefix = (key, type, indent) => `${indent}${label[type]} ${key}`;
@@ -40,12 +40,12 @@ const stylish = (diff) => {
     return tree.flatMap((elem) => {
       switch (elem.type) {
         case 'added':
-        case 'deleted':
-        case 'unchange':
+        case 'removed':
+        case 'unchanged':
           return `${addPrefix(elem.name, elem.type, keyIndent)}: ${stringify(elem.value, depth + 1)}`;
-        case 'changed':
+        case 'updated':
           return [
-            `${addPrefix(elem.name, 'deleted', keyIndent)}: ${stringify(elem.value1, depth + 1)}`,
+            `${addPrefix(elem.name, 'removed', keyIndent)}: ${stringify(elem.value1, depth + 1)}`,
             `${addPrefix(elem.name, 'added', keyIndent)}: ${stringify(elem.value2, depth + 1)}`,
           ];
         case 'nested':
@@ -55,7 +55,7 @@ const stylish = (diff) => {
             `${bracketIndent}}`,
           ];
         default:
-          throw new Error('unknown type node');
+          throw new Error('Unknown type node');
       }
     });
   };
