@@ -23,10 +23,9 @@ const genDiff = (object1, object2) => {
     if (value1 === value2) {
       return { name: key, type: 'unchanged', value: value1 };
     }
-    const update = {
+    return {
       name: key, type: 'updated', value1, value2,
     };
-    return update;
   });
   return result;
 };
