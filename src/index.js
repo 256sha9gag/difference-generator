@@ -31,9 +31,7 @@ const genDiff = (object1, object2) => {
 };
 
 const getDiff = (filepath1, filepath2, formatName) => {
-  console.log(`filepath1 ${filepath1}`);
-  console.log(`filepath2 ${filepath2}`);
-  console.log(`formatName${formatName}`);
+  console.log(`formatName ${formatName}`);
   const object1 = getObject(filepath1);
   const object2 = getObject(filepath2);
   switch (formatName) {
