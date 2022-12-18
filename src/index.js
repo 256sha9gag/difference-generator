@@ -30,7 +30,7 @@ const genDiff = (object1, object2) => {
   return result;
 };
 
-const getDiff = (filepath1, filepath2, formatName) => {
+const getDiff = (filepath1, filepath2, formatName = 'stylish') => {
   console.log(`formatName ${formatName}`);
   const object1 = getObject(filepath1);
   const object2 = getObject(filepath2);
