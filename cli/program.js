@@ -10,7 +10,6 @@ program
   .arguments('<filepath1> <filepath2>')
   .action((filepath1, filepath2) => {
     const formatName = program.opts().format;
-    console.log(formatName);
     const result = getDiff(filepath1, filepath2, formatName);
     console.log(result);
   })
