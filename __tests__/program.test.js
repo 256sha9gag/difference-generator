@@ -16,6 +16,10 @@ const expectNestedPlain = readFile('expect_nested_plain.txt');
 
 const expectNestedJSON = readFile('expect_nested_json.json');
 
+test('getdiff without format nested', () => {
+  expect(getDiff(getFixturePath('nested_file1.json'), getFixturePath('nested_file2.yml'))).toEqual(expectNestedStylish);
+});
+
 test('getdiff stylish nested.json', () => {
   expect(getDiff(getFixturePath('nested_file1.json'), getFixturePath('nested_file2.json'), 'stylish')).toEqual(expectNestedStylish);
 });
