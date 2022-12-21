@@ -19,11 +19,11 @@ jobs:
         node-version: [18.12.1]
   
     steps: # список шагов, которые надо выполнить
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
       # Step's name
       - name: Use Node.js ${{ matrix.node-version }}
 
-        uses: actions/setup-node@v2
+        uses: actions/setup-node@v3
         # The Node.js version to configure
         with:
           node-version: ${{ matrix.node-version }}
