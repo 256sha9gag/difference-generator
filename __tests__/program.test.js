@@ -10,21 +10,11 @@ const __dirname = dirname(__filename);
 const getFixturePath = (filename) => path.join(__dirname, '..', '__fixtures__', filename);
 const readFile = (filename) => fs.readFileSync(getFixturePath(filename), 'utf-8');
 
-const expectFloatStylish = readFile('expect_float_stylish.txt');
-
 const expectNestedStylish = readFile('expect_nested_stylish.txt');
 
 const expectNestedPlain = readFile('expect_nested_plain.txt');
 
 const expectNestedJSON = readFile('expect_nested_json.json');
-
-test('getdiff stylish float.json', () => {
-  expect(getDiff(getFixturePath('float_file1.json'), getFixturePath('float_file2.json'), 'stylish')).toEqual(expectFloatStylish);
-});
-
-test('getdiff stylish float.yml', () => {
-  expect(getDiff(getFixturePath('float_file1.yml'), getFixturePath('float_file2.yml'), 'stylish')).toEqual(expectFloatStylish);
-});
 
 test('getdiff stylish nested.json', () => {
   expect(getDiff(getFixturePath('nested_file1.json'), getFixturePath('nested_file2.json'), 'stylish')).toEqual(expectNestedStylish);

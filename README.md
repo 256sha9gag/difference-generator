@@ -32,9 +32,6 @@
     gendiff -h
 
 ## Example of usage:
-  ### Run gendiff with (default forrmater = stylish) flat json and yml files:
-   [![asciicast](https://asciinema.org/a/546151.svg)](https://asciinema.org/a/546151)
-
   ### Run gendiff with (default forrmater = stylish) nested json and yml files:
    [![asciicast](https://asciinema.org/a/546152.svg)](https://asciinema.org/a/546152)
 
