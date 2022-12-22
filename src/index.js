@@ -1,5 +1,6 @@
 import _ from 'lodash';
-import getObject from './parsers.js';
+import { getAbsPath, getFile, getFormatFile } from './getData.js';
+import parse from './parsers.js';
 import stylish from './formatters/stylish.js';
 import plain from './formatters/plain.js';
 import json from './formatters/json.js';
@@ -31,15 +32,18 @@ const genDiff = (object1, object2) => {
 };
 
 const getDiff = (filepath1, filepath2, formatName = 'stylish') => {
-  const object1 = getObject(filepath1);
-  const object2 = getObject(filepath2);
+  const absPathFile1 = getAbsPath(filepath1);
+  const absPathFile2 = getAbsPath(filepath2);
+  const dataFile1 = parse(getFile(absPathFile1), getFormatFile(absPathFile1));
+  const dataFile2 = parse(getFile(absPathFile2), getFormatFile(absPathFile2));
+
   switch (formatName) {
     case 'stylish':
-      return stylish(genDiff(object1, object2));
+      return stylish(genDiff(dataFile1, dataFile2));
     case 'plain':
-      return plain(genDiff(object1, object2));
+      return plain(genDiff(dataFile1, dataFile2));
     case 'json':
-      return json(genDiff(object1, object2));
+      return json(genDiff(dataFile1, dataFile2));
     default:
       throw new Error('unknown formatName');
   }
